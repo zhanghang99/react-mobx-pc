@@ -1,34 +1,53 @@
 /*
  * @Description: In User Settings Edit
  * @Author: your name
- * @Date: 2019-09-16 17:13:17
- * @LastEditTime: 2019-09-16 17:48:08
+ * @Date: 2019-08-26 15:53:04
+ * @LastEditTime: 2019-09-27 15:53:10
  * @LastEditors: Please set LastEditors
  */
 import axios from 'axios';
-// import { message } from 'antd';
+import { message } from 'antd';
 
-import { requestBaseUrl } from '../config';
-
-axios.defaults.baseURL = requestBaseUrl;
-axios.defaults.withCredentials = true;
-axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.interceptors.response.use((res) => {
-  // if (res.data.errcode) {
-  //   if (res.data.errcode !== 401) {
-  //     message.error(res.data.message || '获取数据失败', 3);
-  //   }
-  //   console.error(res.data);
-  // }
-  // if (typeof res.data !== 'object') {
-  //   console.error(res.data);
-  //   return { errcode: 'response error' };
-  // }
-  return res.data;
-}, (err) => {
-  console.error(err);
-  return { errcode: 'response error' };
-});
-
+axios.defaults.timeout = 60000;
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.interceptors.request.use(
+  config => {
+    // 每次发送请求之前判断状态(redux、localStorage或cookie...)中是否存在token        
+    // 如果存在，则统一在http请求的header都加上token，这样后台根据token判断你的登录情况
+    // 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断 
+    //const token = store.state.token;        
+    //token && (config.headers.Authorization = token);  
+    return config
+  },
+  err => Promise.reject(err),
+);
+axios.interceptors.response.use(
+  (res) => {
+    // 跳转登录
+    if (res && res.data && res.data.status === 'jump') {
+      if (res.data.result && res.data.result.redirect) {
+        setTimeout(() => {
+          window.location.href = res.data.result.redirect;
+        }, 200);
+      }
+      return null;
+    }
+    // 全局统一出错处理
+    if (res && res.data && res.data.status !== 'ok') {
+      if (res.data.message) {
+        message.error(res.data.message);
+      }
+      return res.data;
+    }
+    // 请求正常处理
+    if (res && res.data && res.data.status === 'ok') {
+      return res.data.result;
+    }
+    return res;
+  },
+  (error) => {
+    let status = error.response.status;
+    message.error(status);
+  },
+);
 export default axios;

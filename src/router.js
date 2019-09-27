@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-17 09:12:48
- * @LastEditTime: 2019-09-25 16:44:24
+ * @LastEditTime: 2019-09-27 15:49:50
  * @LastEditors: Please set LastEditors
  */
 import React from 'react';
@@ -12,7 +12,6 @@ import Apps from './component/Apps/index';
 import Item from './component/Item/index';
 import OtherItem from './component/OtherItem/index';
 
-import './style.less';
 
 export default class RouterList extends React.Component{
     render(){
