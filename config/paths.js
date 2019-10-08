@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-09-25 16:48:51
+ * @LastEditTime: 2019-09-25 16:48:51
+ * @LastEditors: your name
+ */
 'use strict';
 
 const path = require('path');

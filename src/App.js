@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-17 09:12:48
- * @LastEditTime: 2019-09-27 15:42:59
+ * @LastEditTime: 2019-10-08 17:01:35
  * @LastEditors: Please set LastEditors
  */
 import React from 'react';
@@ -12,10 +12,13 @@ import 'antd/dist/antd.css';
 import MenuLeft from './component/MenuLeft/MenuLeft';
 import MenuTop from './component/MenuTop/MenuTop';
 import RouterList from './router';
+import { getTopicsList } from './services/app'
 
 import './App.scss';
-
 class App extends React.Component{
+    componentDidMount(){
+        getTopicsList();
+    }
     render(){
         console.log(this.props,'props');
         return (
