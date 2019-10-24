@@ -10,7 +10,6 @@ import React, { Component } from 'react';
 export default class OtherItem extends Component {
 
   render() {
-    alert(111)
     return (
       <div className="other-item-wrap">
         this is a other children item

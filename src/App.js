@@ -24,18 +24,18 @@ class App extends React.Component{
         return (
             <Router>
                 <div className="root-wrap">
-                <div className="main-content">
-                    {/* 左侧导航 */}
-                    <MenuLeft />
-                    <div className="main">
-                        {/* 顶部导航 */}
-                        <MenuTop/>
-                        <div className="router-list">
-                            {/* 路由 */}
-                            <RouterList/>
+                    <div className="main-content">
+                        {/* 左侧导航 */}
+                        <MenuLeft />
+                        <div className="main">
+                            {/* 顶部导航 */}
+                            <MenuTop/>
+                            <div className="router-list">
+                                {/* 路由 */}
+                                <RouterList/>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </Router>
         )

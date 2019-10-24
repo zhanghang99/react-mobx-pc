@@ -5,11 +5,11 @@
  * @LastEditTime: 2019-09-25 16:43:20
  * @LastEditors: Please set LastEditors
  */
-import Store from './Store';
+import IndexStore from './IndexStore';
 import AppStore from './AppStore';
 
 const store = {
     appStore: new AppStore({}),
-    indexStore: new Store({}),
+    indexStore: new IndexStore({}),
 }
 export default store;

@@ -13,13 +13,8 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './stores/index';
-// import AppStore from './stores/AppStore';
-// import AAA from './router';
 configure({ enforceActions: 'always' });
-// const stores = {
-//     appStore: new AppStore({})
-// }
-// console.log(stores,'111');
+
 ReactDOM.render(<Provider {...store}><App/></Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

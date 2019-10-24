@@ -6,6 +6,7 @@
  * @LastEditors: Please set LastEditors
  */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 
 const { SubMenu } = Menu;
@@ -26,16 +27,22 @@ export default class MenuLeft extends React.Component{
           inlineCollapsed={this.state.collapsed}
         >
           <Menu.Item key="1">
+          <Link to="/">
             <Icon type="pie-chart" />
             <span>Option 1</span>
+          </Link>
           </Menu.Item>
           <Menu.Item key="2">
+          <Link to="/id">
             <Icon type="desktop" />
             <span>Option 2</span>
+          </Link>
           </Menu.Item>
           <Menu.Item key="3">
+          <Link to="/otherid">
             <Icon type="inbox" />
             <span>Option 3</span>
+          </Link>
           </Menu.Item>
           <SubMenu
             key="sub1"
