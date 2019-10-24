@@ -13,6 +13,11 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './stores/index';
+
+// 在严格模式下，不允许在 action 外更改任何状态。 可接收的值:
+// "never" (默认): 可以在任意地方修改状态
+// "observed": 在某处观察到的所有状态都需要通过动作进行更改。在正式应用中推荐此严格模式。
+// "always": 状态始终需要通过动作来更新(实际上还包括创建)。
 configure({ enforceActions: 'always' });
 
 ReactDOM.render(<Provider {...store}><App/></Provider>, document.getElementById('root'));
